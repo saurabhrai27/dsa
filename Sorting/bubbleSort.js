@@ -46,4 +46,6 @@ function bubbleSort2(arr) {
         }
       }
     } while (swapped)
-  }
+}
+
+// Big-O = (n^2)
