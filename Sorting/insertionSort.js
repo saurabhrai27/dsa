@@ -13,3 +13,5 @@ function insertionSort(arr) {
 const arr = [8, 20, -2, 4, -6]
 insertionSort(arr)
 console.log(arr) // [-6, -2, 4, 8, 20]
+
+// Big-O = (n^2)
