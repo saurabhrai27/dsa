@@ -67,6 +67,44 @@ function reverseArr(arr, start, end) {
 }
 
 const arr3 = [1,2,3,4,5,6,7]
-leftRotateByDPlaces(arr3, 2, arr3.length)
+leftRotateByDPlaces(arr3, 3, arr3.length)
 console.log("Using Reverse");
 console.log(arr3);
+
+
+// Rotate to right
+
+const rotateToRight = function(nums, k) {
+    if(nums.length <= 1) return;
+
+    const temp = [];
+    const n = nums.length;
+
+    k = k % n;
+    if (k > n) return;
+
+    for(let i = n - k; i < n; i++) {
+        temp.push(nums[i])
+    }
+
+    for(let i = n - k - 1; i >=0; i--) {
+        nums[i + k] = nums[i]
+    }
+
+    for(let i = 0; i < k; i++) {
+        nums[i] = temp[i]
+    }
+};
+
+var rotateRightUsingReverse = function(nums, k) {
+    if(nums.length <= 1) return;
+    
+    const n = nums.length;
+
+    k = k % n;
+    if (k > n) return;
+
+    reverseArr(nums, 0, n - k - 1);
+    reverseArr(nums, n - k, n - 1);
+    reverseArr(nums, 0, n -1)
+};
