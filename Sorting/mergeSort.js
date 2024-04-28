@@ -1,3 +1,13 @@
+/**
+ * Merge Sort is a divide and conquers algorithm, it divides the given array into equal parts and then merges the 2 sorted parts. 
+ * There are 2 main functions :
+ * merge(): This function is used to merge the 2 halves of the array. It assumes that both parts of the array are sorted and merges both of them.
+ * mergeSort(): This function divides the array into 2 parts. low to mid and mid+1 to high where
+ * @param {*} arr 
+ * @param {*} low leftmost index of the array
+ * @param {*} high rightmost index of the array
+ * @returns 
+ */
 function mergeSort(arr, low, high){
     if( low >= high) return;
     let mid = Math.floor((low + high)/2);
