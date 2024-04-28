@@ -12,7 +12,7 @@ class LinkedList {
     }
 
     isEmpty() {
-        return this.size;
+        return this.size === 0;
     }
 
     getSize() {
@@ -63,7 +63,7 @@ class LinkedList {
         }
     }
 
-    remove(index) {
+    removeFrom(index) {
         if(index < 0 || index > this.size) {
             return;
         }
@@ -153,6 +153,24 @@ class LinkedList {
             console.log(listValues);
         }
     }
-
-
 }
+
+const l = new LinkedList();
+
+console.log(l.isEmpty());
+l.append(50);
+l.prepend(20);
+l.append(80);
+l.insert(60, 2);
+console.log(l.getSize());
+l.print();
+l.reverse();
+l.print();
+console.log(l.search(60));
+l.removeFrom(4);
+console.log(l.getSize());
+l.print();
+l.removeData(80);
+l.print();
+console.log(l.getSize());
+l.print();
