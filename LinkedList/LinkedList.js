@@ -46,7 +46,7 @@ class LinkedList {
         this.size++;
     }
 
-    insert(index, data) {
+    insertAt(index, data) {
         if(index === 0 || index > this.size) {
             return;
         } else if(index === 0) {
@@ -161,7 +161,7 @@ console.log(l.isEmpty());
 l.append(50);
 l.prepend(20);
 l.append(80);
-l.insert(60, 2);
+l.insertAt(60, 2);
 console.log(l.getSize());
 l.print();
 l.reverse();
