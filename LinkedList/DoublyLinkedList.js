@@ -53,6 +53,7 @@ class Node {
       }
       const value = this.head.value;
       this.head = this.head.next;
+      this.head.prev = null;
       this.size--;
       return value;
     }
@@ -100,6 +101,35 @@ class Node {
         console.log(list);
       }
     }
+
+    insertAt(data, index) {
+      if(index < 0 && index > this.size) return 'Invalid index';
+
+      const newNode = new Node(data);
+
+      if(index === 0) {
+        this.prepend(data);
+      } else {
+        let prevNode = this.head;
+
+        for(let i = 0; i < index - 1; i++) {
+          prevNode = prevNode.next;
+        }
+
+        newNode.next = prevNode.next;
+        newNode.prev = prevNode
+
+        if(prevNode.next) {
+          prevNode.next.prev = newNode;
+        } else {
+          // If inserting at the end, update tail
+          this.tail = newNode
+        }
+
+        prevNode.next = newNode;
+        this.size++;
+      }
+    }
   }
   
   const list = new DoublyLinkedList();
@@ -113,4 +143,8 @@ class Node {
   list.print();
   list.removeFromFront();
   list.print();
-  
+  list.insertAt(4,2);
+  list.print();
+  list.insertAt(0, 0);
+  list.insertAt(3,3);
+  list.print()
