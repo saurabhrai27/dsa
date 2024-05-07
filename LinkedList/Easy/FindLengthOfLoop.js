@@ -1,3 +1,5 @@
+// Tuf : https://www.youtube.com/watch?v=I4g1qbkTPus
+
 // Leet Code: https://leetcode.com/problems/linked-list-cycle/
 
 /** Approach 1 with hashing
@@ -12,16 +14,22 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
+var findCycleLengthBrute = function(head) {
+    if(!head) return 0;
+
     const hash = new Map();
     let temp = head;
+    let len = 1
     while(temp) {
-        if(hash.get(temp)) return true;
-        hash.set(temp, 1);
+        if(hash.get(temp)) {
+            return len - hash.get(temp)
+        }
+        hash.set(temp, len);
+        len++;
         temp = temp.next;
     }
 
-    return false;
+    return 0;
 };
 
 /** Approach 2 using fast and slow pointer
@@ -32,13 +40,22 @@ var hasCycle = function(head) {
  * }
  */
 
+function findLength(slowPointer, fastPointer) {
+    let len = 1;
+    fastPointer = fastPointer.next;
+    while (slowPointer !== fastPointer) {
+        len++;
+        fastPointer = fastPointer.next;
+    }
+    return len;
+}
+
 /**
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle2 = function(head) {
-    if (head === null) return false;
-    if (head.next === null) return false;
+var findCycleLengthOptimal = function(head) {
+    if (head === null) return 0;
 
     let slow = head;
     let fast = head;
@@ -46,8 +63,10 @@ var hasCycle2 = function(head) {
         slow = slow.next;
         fast = fast.next.next;
 
-        if (slow === fast) return true;
+        if (slow === fast) {
+            let len = findLength(slow, fast)
+        }
     }
 
-    return false;
+    return 0;
 };
