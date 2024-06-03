@@ -37,3 +37,25 @@ function countFrequency() {
 
 const arr = [10,5,10,15,10,5];
 countFrequency(arr);
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function(nums) {
+    if(!nums.length) return false;
+
+    let freqMap = new Map();
+
+    for(let i = 0; i < nums.length; i++) {
+        if(freqMap.has(nums[i])) {
+            let numFreq = freqMap.get(nums[i]) + 1;
+            if(numFreq >= 2) return true;
+            freqMap.set(nums[i],  numFreq);
+        } else {
+            freqMap.set(nums[i], 1);
+        }
+    }
+
+    return false;
+}
